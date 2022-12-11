@@ -3,9 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 # 한글 깨짐 방지를 위해 폰트 설정
 from matplotlib import font_manager, rc
-font_path = "C:/Windows/Fonts/NGULIM.TTF"
-font = font_manager.FontProperties(fname=font_path).get_name()
-rc('font', family=font)
+# font_path = "C:/Windows/Fonts/NGULIM.TTF"
+# font = font_manager.FontProperties(fname=font_path).get_name()
+# rc('font', family=font)
 
 st.title("Show Sparsity")
 uploaded_files = st.file_uploader("Choose a file", accept_multiple_files=True)
@@ -21,7 +21,7 @@ datas = st.multiselect(
 if datas:
     for file in datas:
         data = files[file]
-        labels = '결측값', '평점기록'
+        labels = 'Sparsity', 'Data'
         explode = (0, 0.1)
         sparsity = len(data.iloc[:, 2]) / (len(data.iloc[:, 0].unique()) * len(data.iloc[:, 1].unique())) * 100
         sizes = [100 - sparsity, sparsity]
